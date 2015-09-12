@@ -39,6 +39,8 @@ class RentalsController < ApplicationController
 
   def confirm
     @rental = Rental.find_by rental_params
+
+    #TODO Braintree
   end
 
   # PATCH/PUT /rentals/1
