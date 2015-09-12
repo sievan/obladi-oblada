@@ -8,20 +8,24 @@
 
 names =  ["Jocke", "Osquar", "Lasse Kongo", "Embraquel D Tuta"]
 
+Rental.destroy_all
+Rentable.destroy_all
+Owner.destroy_all
+User.destroy_all
+
 names.each do |n|
-  User.create name: names[n]
+  User.create name: n
 end
 
-User.each do |u|
+User.all.each do |u|
   Owner.create user: u
   (1..5).to_a.sample.times do |n|
     Rentable.create owner: u.owner, description: "#{u.name}s coola grej #{n}"
   end
 end
 
-User.each do |u|
-  Rental.create user: u
+User.all.each do |u|
   (1..5).to_a.sample.times do |n|
-
+    Rental.create user: u, rentable: Rentable.all.sample
   end
 end
