@@ -14,7 +14,7 @@ function addItem(title, completed=false) {
 }
 
 // Facebook style store creation.
-const RentablesList = assign({}, BaseStore, {
+const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
 
@@ -61,4 +61,4 @@ const RentablesList = assign({}, BaseStore, {
   })
 });
 
-export default RentablesList;
+export default RentableStore;
