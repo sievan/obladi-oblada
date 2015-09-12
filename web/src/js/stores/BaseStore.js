@@ -15,5 +15,9 @@ export default assign({}, EventEmitter.prototype, {
   // triggers change listener above, firing controller-view callback
   emitChange() {
     this.emit(Constants.CHANGE_EVENT);
-  }
+  },
+
+  baseUrl() {
+    return 'http://f4f0e449.ngrok.io';
+  },
 });
