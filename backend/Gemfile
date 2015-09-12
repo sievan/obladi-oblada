@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
@@ -12,6 +11,7 @@ gem 'pundit'
 gem 'turbolinks'
 gem 'sass-rails'
 gem 'jquery-rails'
+gem 'braintree'
 
 group :development, :test do
   gem 'pry-byebug'

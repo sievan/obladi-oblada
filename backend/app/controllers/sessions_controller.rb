@@ -1,9 +1,14 @@
 class SessionsController < ApplicationController
   skip_after_action :verify_authorized
+
   def new
+    session[:token] = params[:token]
     session[:callback] = params[:callback]
+
     if session[:user]
-      redirect_to callback_url(User.find(session[:user]))
+      puts params[:token]
+      AuthenticationToken.create(user: current_user, token: params[:token])
+      redirect_to session[:callback]
     else
       redirect_to "/auth/#{params[:provider] || 'paypal' }"
     end
@@ -11,14 +16,18 @@ class SessionsController < ApplicationController
 
   def create
     session[:user] = omniauth_user.id
-    redirect_to callback_url(omniauth_user)
+    AuthenticationToken.create token: session[:token], user: omniauth_user
+    puts session[:token]
+    redirect_to session[:callback]
+  end
+
+  def verify
+    @token = AuthenticationToken.find_by token: params[:token]
+    puts params[:token]
+    render nothing: true, status: :not_found unless @token
   end
 
   private
-
-  def callback_url(user)
-    "#{session[:callback]}?token=#{user.auth_token.token}"
-  end
 
   def omniauth_user
     @user ||= User.find_or_create_from_omniauth(omniauth_info)

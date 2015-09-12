@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/login/(:provider)', to: 'sessions#new'
+  get '/sessions/verify/:token', to: 'sessions#verify'
 end
