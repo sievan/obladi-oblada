@@ -7,6 +7,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-paypal'
 gem 'dotenv'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'pry-byebug'
