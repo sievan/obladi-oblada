@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rentable.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @rentable.price %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @rentable.owner %>
+</p>
+
+<%= link_to 'Edit', edit_rentable_path(@rentable) %> |
+<%= link_to 'Back', rentables_path %>
