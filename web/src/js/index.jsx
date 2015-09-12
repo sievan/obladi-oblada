@@ -1,6 +1,7 @@
 import React from 'react';
 import RentablesList from './components/RentablesList.jsx';
 import AppContainer from './components/AppContainer.jsx';
+import ListingForm from './components/CreateListingForm.jsx';
 
 import { Router, Route, Link } from 'react-router'
 
@@ -50,5 +51,5 @@ React.render((
       <Route path="pay" component={Payment} />
     </Route>
   </Router>
-), document.body)
+), document.getElementById('main'))
 
