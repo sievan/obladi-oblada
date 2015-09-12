@@ -20,11 +20,11 @@ const RentableStore = assign({}, BaseStore, {
         console.log("rentables fetching failed");
         return;
       }
-      
+
       _data['rentables'] = JSON.parse(body.toString());
       RentableStore.emitChange();
     });
-    
+
     return _data;
   },
 
@@ -32,7 +32,6 @@ const RentableStore = assign({}, BaseStore, {
   dispatcherIndex: Dispatcher.register(function(payload) {
     let action = payload.action;
       // TODO(mattis): register changed action
-    
   })
 });
 
