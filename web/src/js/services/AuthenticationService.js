@@ -1,12 +1,8 @@
 import UserStore  from '../stores/UserStore';
 
 export default {
-  baseUrl() {
-    return 'http://f4f0e449.ngrok.io';
-  },
-
   loginUrl(token) {
-    return '' + this.baseUrl() + '/login?token=' + token + '&callback=http://localhost:8080'
+    return '' + UserStore.baseUrl() + '/login?token=' + token + '&callback=http://localhost:8080'
   },
 
   verifyUrl(token) {
