@@ -6,7 +6,7 @@ import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import Input from 'react-bootstrap/lib/Input';
 
 var defaults = {
-    image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg'
+    image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg'
 };
 
 export default React.createClass({
