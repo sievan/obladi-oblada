@@ -24,10 +24,7 @@ const RentablesList = assign({}, BaseStore, {
           "description":"cool thing",
           "price":"9001.0",
           "owner_id":2,
-<<<<<<< edba0428dd6a30a3e25ebc23b09b107274d122f7
           "url": "rentable/1",
-=======
->>>>>>> first commit on /rentlist
           "created_at":"2015-09-12T12:34:07.674Z",
           "updated_at":"2015-09-12T12:34:07.674Z"
         },
@@ -36,10 +33,7 @@ const RentablesList = assign({}, BaseStore, {
           "description":"cool thing",
           "price":"9001.0",
           "owner_id":2,
-<<<<<<< edba0428dd6a30a3e25ebc23b09b107274d122f7
           "url": "rentable/2",
-=======
->>>>>>> first commit on /rentlist
           "created_at":"2015-09-12T12:34:07.674Z",
           "updated_at":"2015-09-12T12:34:07.674Z"
         },
