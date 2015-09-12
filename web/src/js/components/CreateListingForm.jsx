@@ -11,19 +11,15 @@ export default React.createClass({
     if (!description || !title || !price) {
       return;
     }
+    var data = new FormData();
+    data.append('rentable[title]', title);
+    data.append('rentable[description]', description);
+    data.append('rentable[price]', price);
+    data.append('rentable[image]', image.files[0]);
 
     fetch('http://localhost:3000/rentables', {
       method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: title,
-        description: description,
-        price: price,
-        image: image.files[0]
-      })
+      body: data
     })
 
     this.refs.title.getInputDOMNode().value = '';
@@ -34,7 +30,7 @@ export default React.createClass({
   },
   render: function() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form name="rentable" onSubmit={this.handleSubmit}>
         <Input type="text" label="Name" placeholder="Name of item" ref="title" />
         <Input type="text" label="Description" placeholder="Short description" ref="description" />
         <Input type="text" label="Price" placeholder="Price" ref="price" />
