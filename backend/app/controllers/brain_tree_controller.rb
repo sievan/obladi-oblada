@@ -16,4 +16,9 @@ class BrainTreeController < ApplicationController
       p result.errors
     end
   end
+
+  def add_payment_method
+    # TODO fix this!! Take care of nonce
+    render nothing: true
+  end
 end

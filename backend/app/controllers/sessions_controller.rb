@@ -27,6 +27,12 @@ class SessionsController < ApplicationController
     render nothing: true, status: :not_found unless @token
   end
 
+  def profile
+    @token = AuthenticationToken.find_by token: params[:token]
+    puts @token
+    render nothing: true, status: :not_found unless @token
+  end
+
   private
 
   def omniauth_user

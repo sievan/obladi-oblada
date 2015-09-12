@@ -3,13 +3,10 @@ import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
 
+import AuthenticationService from '../services/AuthenticationService';
+
 // data storage
 var data = {};
-
-// add private functions to modify data
-function addItem(title, completed=false) {
-  _data.push({title, completed});
-}
 
 // Facebook style store creation.
 const UserStore = assign({}, BaseStore, {
@@ -20,6 +17,8 @@ const UserStore = assign({}, BaseStore, {
       data.token = localStorage.getItem('token');
     }
 
+    this.setCurrentUser();
+
     return data.token;
   },
 
@@ -29,10 +28,24 @@ const UserStore = assign({}, BaseStore, {
     return !!data.token
   },
 
-  setToken(token) {
+  setToken(token, id) {
     localStorage.setItem('token', token);
     data.token = token;
+    this.setCurrentUser();
     UserStore.emitChange();
+  },
+
+  setCurrentUser() {
+    if (!!data.token) {
+      AuthenticationService.getCurrentUser(data.token)
+      .then( (user) => {
+        data.current_user = user;
+      });
+    }
+  },
+
+  getCurrentUser() {
+    return data.current_user;
   },
 
   signOut() {
