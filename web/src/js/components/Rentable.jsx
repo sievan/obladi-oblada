@@ -13,7 +13,8 @@ export default React.createClass({
     
     return (
       <ListGroupItem>
-        <span>{rentable.id}</span>
+        <a href={rentable.url}><h4>This is the title of item {rentable.id}</h4></a>
+        <p>{rentable.description}</p>
       </ListGroupItem>
     );
   }
