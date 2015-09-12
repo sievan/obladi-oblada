@@ -9,6 +9,7 @@ import Payment from './components/payment/Payment.jsx';
 import Home from './components/pages/Home.jsx';
 import About from './components/pages/About.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
+import Authenticated from './components/pages/Authenticated.jsx';
 
 var App = React.createClass({
   render() {
@@ -41,6 +42,7 @@ React.render((
       <Route path="rentlist" component={RentList} />
       <Route path="add-item" component={ListingForm} />
       <Route path="pay" component={Payment} />
+      <Route path="authenticated" component={Authenticated} />
     </Route>
   </Router>
 ), document.getElementById('main'))
