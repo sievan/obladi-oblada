@@ -3,7 +3,7 @@ var _ = require('underscore');
 import React, {PropTypes} from 'react';
 import ActionCreator from '../actions/TodoActionCreators';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import Input from 'react-bootstrap/lib/Input';
+import Button from 'react-bootstrap/lib/button';
 import { Router, Route, Link } from 'react-router'
 
 import RentableStore from '../stores/RentableStore';
@@ -23,12 +23,21 @@ export default React.createClass({
     this.forceUpdate();
   },
 
+  book: function() {
+    var data = new FormData();
+    data.append('rental[rentable_id]', this.props.params.id);
+    data.append('rental[user_id]', 1); // TODO: change to real user id
+    fetch('http://localhost:3000/rentals', {
+      method: 'post',
+      body: data
+    })
+  },
+
   render() {
     let {rentable} = this.state;
 
     _.extendOwn(rentable.selectedRentable, defaults); //add from defaults that aren't present
     console.log(this.state.rentable.selectedRentable)
-
 
     if(!this.state.rentable.selectedRentable) {
       return (
@@ -41,6 +50,7 @@ export default React.createClass({
           <img src={this.state.rentable.selectedRentable.image} />
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
+          <Button bsStyle="success" onClick={this.book}>Book!</Button>
         </div>
       );
     }
