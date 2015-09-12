@@ -7,6 +7,7 @@ export default React.createClass({
     var title = this.refs.title.getValue()
     var description = this.refs.description.getValue()
     var price = this.refs.price.getValue()
+    var image = this.refs.image.getInputDOMNode()
     if (!description || !title || !price) {
       return;
     }
@@ -20,13 +21,15 @@ export default React.createClass({
       body: JSON.stringify({
         title: title,
         description: description,
-        price: price
+        price: price,
+        image: image.files[0]
       })
     })
 
     this.refs.title.getInputDOMNode().value = '';
     this.refs.description.getInputDOMNode().value = '';
     this.refs.price.getInputDOMNode().value = '';
+    this.refs.image.getInputDOMNode().value = '';
     return;
   },
   render: function() {
@@ -35,6 +38,7 @@ export default React.createClass({
         <Input type="text" label="Name" placeholder="Name of item" ref="title" />
         <Input type="text" label="Description" placeholder="Short description" ref="description" />
         <Input type="text" label="Price" placeholder="Price" ref="price" />
+        <Input type="file" ref="image" />
         <Input type="submit" value="Post" />
       </form>
     );
