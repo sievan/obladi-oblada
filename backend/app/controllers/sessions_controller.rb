@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   private
 
   def callback_url(user)
-    "#{session[:callback]}?token=#{user.auth_token}"
+    "#{session[:callback]}?token=#{user.auth_token.token}"
   end
 
   def omniauth_user
