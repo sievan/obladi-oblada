@@ -3,8 +3,10 @@ class User < ActiveRecord::Base
     name
   end
 
-  def self.find_or_create_from_omniauth(_omniauth_info)
-    User.first
+  def self.find_or_create_from_omniauth(omniauth_hash)
+    authentication = Authentication.find_or_new_from_omniauth(omniauth_hash)
+    authentication.user ||=
+      authentication.user.create name: omniauth_hash[:info][:name]
   end
 
   def auth_token
