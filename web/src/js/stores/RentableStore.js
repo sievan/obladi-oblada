@@ -3,43 +3,25 @@ import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
 
-// data storage
-let _data = [];
+var fetch = require('fetch').fetchUrl;
 
-// add private functions to modify data
-function addItem(title, completed=false) {
-  _data.push({title, completed});
-}
+// data storage
+let _data = {
+  rentables: []
+};
+
 
 // Facebook style store creation.
-const RentablesList = assign({}, BaseStore, {
+const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
 
-    //TODO(mattis): Load data from server here:
-    return {
-      rentables: [
-        {
-          "id":1,
-          "description":"cool thing",
-          "price":"9001.0",
-          "owner_id":2,
-          "url": "rentable/1",
-          "created_at":"2015-09-12T12:34:07.674Z",
-          "updated_at":"2015-09-12T12:34:07.674Z"
-        },
-        {
-          "id":2,
-          "description":"cool thing",
-          "price":"9001.0",
-          "owner_id":2,
-          "url": "rentable/2",
-          "created_at":"2015-09-12T12:34:07.674Z",
-          "updated_at":"2015-09-12T12:34:07.674Z"
-        },
-      ]
-    };
-
+    fetch('http://localhost:3000/rentables.json', function(error, meta, body) {
+      _data['rentables'] = JSON.parse(body.toString());
+      RentableStore.emitChange();
+    });
+    
+    return _data;
   },
 
   // register store with dispatcher, allowing actions to flow through
@@ -50,4 +32,4 @@ const RentablesList = assign({}, BaseStore, {
   })
 });
 
-export default RentablesList;
+export default RentableStore;
