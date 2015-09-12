@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912203138) do
+ActiveRecord::Schema.define(version: 20150912233010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20150912203138) do
   create_table "rentals", force: :cascade do |t|
     t.integer  "rentable_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.boolean  "approved_by_owner"
   end
 
   add_index "rentals", ["rentable_id"], name: "index_rentals_on_rentable_id", using: :btree

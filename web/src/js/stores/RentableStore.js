@@ -7,7 +7,8 @@ var fetch = require('fetch').fetchUrl;
 
 // data storage
 let _data = {
-  rentables: []
+  rentables: [],
+  selectedRentable: null
 };
 
 
@@ -15,13 +16,25 @@ let _data = {
 const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
-    fetch('http://localhost:3000/rentables.json', function(error, meta, body) {
+    fetch(this.baseUrl + 'rentables.json', function(error, meta, body) {
       if (error) {
         console.log("rentables fetching failed");
         return;
       }
 
       _data['rentables'] = JSON.parse(body.toString());
+      RentableStore.emitChange();
+    });
+
+    return _data;
+  },
+
+  getOne(id) {
+    fetch('http://localhost:3000/rentables/'+id+'.json', function(error, meta, body) {
+      if (error) {
+        return;
+      }
+      _data.selectedRentable = JSON.parse(body.toString());
       RentableStore.emitChange();
     });
 
