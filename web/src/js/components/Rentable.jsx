@@ -6,7 +6,7 @@ import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import Input from 'react-bootstrap/lib/Input';
 
 var defaults = {
-    image: 'http://i.dailymail.co.uk/i/pix/2011/12/17/article-2075608-0F35EBF600000578-825_634x824.jpg'
+    image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg'
 };
 
 export default React.createClass({
@@ -22,11 +22,15 @@ export default React.createClass({
     return (
       <ListGroupItem>
 
-        <img src={rentable.image} style={{height: '100px'}}/>
-        <a href={rentable.url}>
-          <h4>This is the title of item {rentable.id}</h4>
-        </a>
-        <p>{rentable.description}</span>
+        <div className="rentable-list_entry">
+        <img src={rentable.image} />
+        <div>
+          <a href={rentable.url}>
+            <h4>This is the title of item {rentable.id}</h4>
+          </a>
+        <p>{rentable.description}</p>
+        </div>
+        </div>
       </ListGroupItem>
     );
   }
