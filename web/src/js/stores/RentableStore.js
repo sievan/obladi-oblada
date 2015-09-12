@@ -7,7 +7,8 @@ var fetch = require('fetch').fetchUrl;
 
 // data storage
 let _data = {
-  rentables: []
+  rentables: [],
+  selectedRentable: null
 };
 
 
@@ -22,6 +23,18 @@ const RentableStore = assign({}, BaseStore, {
       }
 
       _data['rentables'] = JSON.parse(body.toString());
+      RentableStore.emitChange();
+    });
+
+    return _data;
+  },
+
+  getOne(id) {
+    fetch('http://localhost:3000/rentables/'+id+'.json', function(error, meta, body) {
+      if (error) {
+        return;
+      }
+      _data.selectedRentable = JSON.parse(body.toString());
       RentableStore.emitChange();
     });
 
