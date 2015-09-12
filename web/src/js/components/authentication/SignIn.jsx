@@ -59,7 +59,7 @@ var SignIn= React.createClass({
     if (this.state.isSignedIn) {
       return (
         <div>
-          <Button onClick={this.handleSignout}>Sign out</Button>
+          <Button bsStyle="success" onClick={this.handleSignout}>Sign out</Button>
         </div>
       )
     } else {
@@ -72,7 +72,7 @@ var SignIn= React.createClass({
       } else {
         return (
           <div>
-            <Button onClick={this.handleAuthenticate} >Login with paypal</Button>
+            <Button bsStyle="success" onClick={this.handleAuthenticate} >Login with paypal</Button>
           </div>
         )
       }
