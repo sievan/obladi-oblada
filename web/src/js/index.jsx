@@ -22,11 +22,19 @@ var App = React.createClass({
     return (
       <div>
         <NavigationBar />
-        <div className="container">
 
+        <div className="container">
           {this.props.children}
         </div>
       </div>
+    )
+  }
+})
+
+var RentList = React.createClass({
+  render() {
+    return (
+      <RentablesList />
     )
   }
 })
