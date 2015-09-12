@@ -6,6 +6,7 @@ import ListingForm from './components/CreateListingForm.jsx';
 import { Router, Route, Link } from 'react-router'
 
 import Payment from './components/payment/Payment.jsx';
+import RentableItem from './components/RentableItem.jsx';
 import Home from './components/pages/Home.jsx';
 import About from './components/pages/About.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
@@ -43,6 +44,7 @@ React.render((
       <Route path="add-item" component={ListingForm} />
       <Route path="pay" component={Payment} />
       <Route path="authenticated" component={Authenticated} />
+      <Route path="/rentable/:id" component={RentableItem} />
     </Route>
   </Router>
 ), document.getElementById('main'))
