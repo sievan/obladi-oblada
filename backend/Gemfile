@@ -8,6 +8,10 @@ gem 'omniauth'
 gem 'omniauth-paypal'
 gem 'dotenv'
 gem 'rack-cors'
+gem 'pundit'
+gem 'turbolinks'
+gem 'sass-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry-byebug'

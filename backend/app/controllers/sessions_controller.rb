@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_after_action :verify_authorized
   def new
     session[:callback] = params[:callback]
     if session[:user]

@@ -4,12 +4,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = policy_scope(User).all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    return render :full if params[:id] == current_user.id
   end
 
   # GET /users/new
