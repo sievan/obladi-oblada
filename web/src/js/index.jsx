@@ -24,15 +24,6 @@ var App = React.createClass({
   }
 })
 
-var RentList = React.createClass({
-  render() {
-    return (
-      <div>
-        <RentablesList />
-      </div>
-    )
-  }
-})
 
 var RentList = React.createClass({
   render() {
