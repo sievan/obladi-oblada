@@ -16,8 +16,14 @@ var BrainTreePaymentForm = React.createClass({
 
   initializeBraintree: function() {
     PaymentService.getClientToken()
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (body) => {
+      return body.token;
+    })
     .then( (clientToken) => {
-      console.log(clientToken);
+      console.log("token", clientToken);
       braintree.setup(clientToken, "dropin", {
         container: this.getDOMNode(),
         paymentMethodNonceReceived: this.props.onNonceReceived,

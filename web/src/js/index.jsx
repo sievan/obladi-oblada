@@ -20,6 +20,7 @@ var App = React.createClass({
 
         <div className="container">
           {this.props.children}
+          <RentList />
         </div>
       </div>
     )

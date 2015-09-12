@@ -1,20 +1,24 @@
 import UserStore from '../stores/UserStore';
 
 export default {
-  doPayment(nounce) {
+  addPaymentMethod(nounce) {
+
+
     console.log("do payment", nounce);
 
-    /*fetch('http://localhost:3000/addPaymentOptions', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nounce: nounce,
-        userId: 1
-      })
-    }*/
+    return new Promise(() => {
+      fetch(UserStore.baseUrl() + '/braintree/add_paytment_method', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nounce: nounce,
+          userId: 1
+        })
+      });
+    });
   },
 
   getClientToken() {

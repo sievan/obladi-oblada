@@ -6,7 +6,11 @@ export default {
   },
 
   verifyUrl(token) {
-    return '' + this.baseUrl() + '/sessions/verify/' + token
+    return '' + UserStore.baseUrl() + '/sessions/verify/' + token
+  },
+
+  profileUrl(token) {
+    return '' + UserStore.baseUrl() + '/profile/?token='+token ;
   },
 
   getSignupToken(token) {
@@ -26,5 +30,19 @@ export default {
     }).catch( (err) => {
       console.log("err", err);
     });
+  },
+
+  getCurrentUser(token) {
+    return new Promise(
+      fetch(this.profileUrl(token), {
+        method: 'get',
+        header: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then( (res) => {
+        return res.json();
+      })
+    )
   }
 }
