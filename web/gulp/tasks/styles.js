@@ -9,3 +9,8 @@ gulp.task('styles', function() {
     .pipe(gulp.dest(config.dest))
     .pipe(connect.reload());
 });
+
+gulp.task('sass:watch', function() {
+  gulp.watch(config.src, [config.dest]);
+});
+
