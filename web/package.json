@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "babel-eslint": "^4.1.1",
+    "braintree-web": "^2.12.2",
     "eslint": "^1.4.1",
     "eslint-plugin-react": "^3.3.2",
     "flux": "^2.1.1",
