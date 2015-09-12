@@ -6,32 +6,35 @@ export default React.createClass({
     e.preventDefault();
     var name = this.refs.name.getValue()
     var description = this.refs.description.getValue()
-    if (!description || !name) {
+    var price = this.refs.price.getValue()
+    if (!description || !name || !price) {
       return;
     }
 
-    $.ajax({
-      url: "http://localhost:3000/",
-      dataType: 'json',
-      type: 'POST',
-      data: comment,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    fetch('http://localhost:3000/rentables', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        description: description,
+        price: price
+      })
+    })
 
     this.refs.name.getInputDOMNode().value = '';
     this.refs.description.getInputDOMNode().value = '';
+    this.refs.price.getInputDOMNode().value = '';
     return;
   },
   render: function() {
     return (
       <form className="commentForm" onSubmit={this.handleSubmit}>
-        <Input type="text" placeholder="Name of item" ref="name" />
-        <Input type="text" placeholder="Short description" ref="description" />
+        <Input type="text" label="Name" placeholder="Name of item" ref="name" />
+        <Input type="text" label="Description" placeholder="Short description" ref="description" />
+        <Input type="text" label="Price" placeholder="Price" ref="price" />
         <Input type="submit" value="Post" />
       </form>
     );
