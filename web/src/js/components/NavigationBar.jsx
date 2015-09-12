@@ -9,8 +9,8 @@ var NavigationBar = React.createClass({
   render() {
     return (
       <div>
-        <Navbar brand="React-Bootstrap">
-          <Nav>
+        <Navbar brand="HandyMan" inverse toggleNavKey={0}>
+          <Nav eventKey={0}>
             <NavItem><Link to="/home">Home</Link></NavItem>
             <NavItem><Link to="/about">About</Link></NavItem>
             <NavItem><Link to="/rentlist">I wanna rent someting!</Link></NavItem>
