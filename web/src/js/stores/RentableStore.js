@@ -3,6 +3,8 @@ import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
 
+var fetch = require('fetch').fetchUrl;
+
 // data storage
 let _data = [];
 
@@ -16,7 +18,16 @@ const RentablesList = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
 
-    //TODO(mattis): Load data from server here:
+    var loaded_rentables = fetch(
+      'http://localhost:3000/rentables.json',
+      function(error, meta, body) {
+        console.log(body);
+      }
+    );
+
+
+
+    
     return {
       rentables: [
         {
