@@ -1,4 +1,5 @@
 import React from 'react';
+import RentablesList from './components/RentablesList.jsx';
 import AppContainer from './components/AppContainer.jsx';
 
 import { Router, Route, Link } from 'react-router'
@@ -14,6 +15,7 @@ var App = React.createClass({
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/rentlist">I wanna rent someting!</Link></li>
           <li><Link to="/pay">Do Payment!</Link></li>
         </ul>
 
@@ -47,11 +49,20 @@ var About = React.createClass({
   }
 })
 
+var RentList = React.createClass({
+  render() {
+    return (
+      <RentablesList />
+    )
+  }
+})
+
 React.render((
   <Router>
     <Route path="/" component={App}>
       <Route path="home" component={Home} />
       <Route path="about" component={About} />
+      <Route path="rentlist" component={RentList} />
       <Route path="pay" component={Payment} />
     </Route>
   </Router>
