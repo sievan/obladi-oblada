@@ -8,9 +8,14 @@ import {Button} from 'react-bootstrap';
 export default React.createClass({
   
   getInitialState() {
+    RentableStore.addChangeListener(this._onUpdate);
     return RentableStore.getAll();
   },
 
+  _onUpdate() {
+    this.forceUpdate();
+  },
+  
   render() {
     let {rentables} = this.state;
 

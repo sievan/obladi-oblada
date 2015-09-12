@@ -15,8 +15,12 @@ let _data = {
 const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
-
     fetch('http://localhost:3000/rentables.json', function(error, meta, body) {
+      if (error) {
+        console.log("rentables fetching failed");
+        return;
+      }
+      
       _data['rentables'] = JSON.parse(body.toString());
       RentableStore.emitChange();
     });
