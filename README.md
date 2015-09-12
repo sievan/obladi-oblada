@@ -1,5 +1,13 @@
 # obladi-oblada
 
+## Getting started
+
+### Backend
+
+- bundle install
+- rake db:migrate
+- rails s
+
 # Use case 1
 Person looking for jackhammer.
 
