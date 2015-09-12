@@ -1,0 +1,2 @@
+class RentablePolicy < ApplicationPolicy
+end

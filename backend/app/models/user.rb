@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_from_omniauth(omniauth_hash)
     authentication = Authentication.find_or_new_from_omniauth(omniauth_hash)
-    authentication.user ||=
-      authentication.user.create name: omniauth_hash[:info][:name]
+    unless authentication.user
+      authentication.update user: create(name: omniauth_hash[:info][:name])
+    end
+    authentication.user
   end
 
   def auth_token
