@@ -37,6 +37,10 @@ class RentalsController < ApplicationController
     end
   end
 
+  def confirm
+    @rental = Rental.find_by rental_params
+  end
+
   # PATCH/PUT /rentals/1
   # PATCH/PUT /rentals/1.json
   def update
