@@ -48,6 +48,7 @@ React.render((
       <Route path="home" component={Home} />
       <Route path="about" component={About} />
       <Route path="rentlist" component={RentList} />
+      <Route path="add-item" component={ListingForm} />
       <Route path="pay" component={Payment} />
     </Route>
   </Router>

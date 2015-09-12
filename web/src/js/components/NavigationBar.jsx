@@ -14,7 +14,7 @@ var NavigationBar = React.createClass({
             <NavItem><Link to="/home">Home</Link></NavItem>
             <NavItem><Link to="/about">About</Link></NavItem>
             <NavItem><Link to="/rentlist">I wanna rent someting!</Link></NavItem>
-
+            <NavItem><Link to="/add-item">I have something to rent out!</Link></NavItem>
             <NavItem><Link to="/pay">Do Payment!</Link></NavItem>
             <NavItem><SignIn /></NavItem>
           </Nav>
