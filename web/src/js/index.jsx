@@ -5,18 +5,11 @@ import AppContainer from './components/AppContainer.jsx';
 import { Router, Route, Link } from 'react-router'
 
 import Payment from './components/payment/Payment.jsx';
-
-import SignIn from  './components/authentication/SingIn.jsx';
-
 import Home from './components/pages/Home.jsx';
 import About from './components/pages/About.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 
 var App = React.createClass({
-  handleAuthentication() {
-    console.log('auth');
-  },
-
   render() {
     return (
       <div>
