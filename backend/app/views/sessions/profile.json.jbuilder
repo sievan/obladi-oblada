@@ -1,1 +1,1 @@
-json.extract! @token, :id
+json.extract! @token, :user_id

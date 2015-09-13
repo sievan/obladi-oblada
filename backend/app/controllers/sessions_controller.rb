@@ -10,9 +10,7 @@ class SessionsController < ApplicationController
       AuthenticationToken.create(user: current_user, token: params[:token])
       redirect_to session[:callback]
     else
-      AuthenticationToken.create(user: current_user, token: params[:token])
-      redirect_to session[:callback]
-      # redirect_to "/auth/#{params[:provider] || 'paypal' }"
+      redirect_to "/auth/#{params[:provider] || 'paypal' }"
     end
   end
 
