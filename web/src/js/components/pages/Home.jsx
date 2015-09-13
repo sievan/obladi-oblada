@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Button from 'react-bootstrap/lib/Button';
 
 var Home = React.createClass({
@@ -13,13 +14,19 @@ var Home = React.createClass({
     document.body.style.background = null;
   },
 
+  
+  onClickRedirect() {
+    console.log('clicked');
+    window.location.href = "/#/rentlist;"
+  },
+
   render() {
     return (
       <div>
       <h1 className="fulhack" >
         For your needs now, <br/>and your consience later.
-      </h1>
-        <Button bsStyle="info" className="home-cta">Lets rent some stuff!</Button>
+        </h1>
+        <Button bsStyle="info" className="home-cta" onClick={this.onClickRedirect}>Lets rent some stuff!</Button>
       </div>
     );
   }
