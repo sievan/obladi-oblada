@@ -20,7 +20,7 @@ end
 User.all.each do |u|
   Owner.create user: u
   (1..5).to_a.sample.times do |n|
-    Rentable.create owner: u.owner, description: "#{u.name}s coola grej #{n}"
+    Rentable.create owner: u.owner, description: "#{u.name}s coola grej #{n}", title: "Item #{n}"
   end
 end
 
