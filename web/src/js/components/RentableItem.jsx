@@ -63,8 +63,6 @@ export default React.createClass({
     let {rentable} = this.state;
     console.log(this.state);
 
-    _.extendOwn(rentable.selectedRentable, defaults); //add from defaults that aren't present
-
     if(!this.state.rentable.selectedRentable) {
       return (
         <div> Loading... </div>
@@ -73,8 +71,8 @@ export default React.createClass({
     else {
       var hidden = { display: 'none'}
       return (
-        <div>
-          <img style={style} src={this.state.rentable.selectedRentable.image} />
+        <div className="rental-booking">
+          <img style={style} src={UserStore.baseUrl() + '/uploads/' + this.state.rentable.selectedRentable.image} />
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
 
