@@ -28,7 +28,7 @@ var NavigationBar = React.createClass({
               <NavItem><Link to="/rentlist">I wanna rent someting!</Link></NavItem>
               <NavItem><Link to="/add-item">I have something to rent out!</Link></NavItem>
               <NavItem><SignIn /></NavItem>
-              <NavItem><Link to="/pay">Profile</Link></NavItem>
+              <NavItem><Link to="/add_payment_option">Profile</Link></NavItem>
             </Nav>
           </Navbar>
         </div>
