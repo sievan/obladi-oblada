@@ -4,13 +4,14 @@ import MyRentable from './MyRentable.jsx';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import Alert from 'react-bootstrap/lib/Alert';
 import {Button} from 'react-bootstrap';
+import UserStore from '../stores/UserStore';
 
 export default React.createClass({
 
   getInitialState() {
     RentableStore.addChangeListener(this._onUpdate);
 
-    return RentableStore.getAll(1); // TODO: add real user id
+    return RentableStore.getAll(UserStore.getCurrentUser()); // TODO: add real user id
   },
 
   _onUpdate() {
