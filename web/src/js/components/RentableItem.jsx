@@ -21,7 +21,7 @@ export default React.createClass({
     RentableStore.addChangeListener(this._onUpdate)
     RentableStore.isBooked(this.props.params.id)
     .then( (res) => {
-      this.setState({hasBeenBooked: res})
+      this.setHasBeenBooked(res);
     });
 
     return {
@@ -47,7 +47,14 @@ export default React.createClass({
       body: data
     })
 
-    this.setState({hasBeenBooked: true, bookMessage: "Booked it!"});
+    this.setHasBeenBooked(true);
+  },
+
+  setHasBeenBooked(hasBeenBooked) {
+    this.setState({hasBeenBooked: hasBeenBooked});
+    if (hasBeenBooked) {
+      this.setState({bookMessage: "Booked it!"});
+    }
   },
 
   render() {
