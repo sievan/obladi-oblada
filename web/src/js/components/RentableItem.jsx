@@ -42,6 +42,7 @@ export default React.createClass({
     }
     var data = new FormData();
     data.append('rental[rentable_id]', this.props.params.id);
+    data.append('rental[user_id]', UserStore.getCurrentUser());
 
     //data.append('rental[user_id]', user_id); // TODO: change to real user id
     fetch(RentableStore.baseUrl() + '/rentals', {

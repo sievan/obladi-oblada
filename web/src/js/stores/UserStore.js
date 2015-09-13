@@ -46,16 +46,13 @@ const UserStore = assign({}, BaseStore, {
     if (!!data.token) {
       AuthenticationService.getCurrentUser(data.token)
       .then((a) => {
-        console.log(a.user_id);
         localStorage.setItem('user_id', a.user_id);
       });;
-      console.log("userid", data.current_user);
     }
   },
 
   getCurrentUser() {
-    console.log("current user", data.token, data.current_user);
-    return data.current_user;
+    return data.user_id;
   },
 
   signOut() {
