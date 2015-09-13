@@ -10,3 +10,4 @@
 /web/node_modules/
 backend/npm-debug.log
 web/npm-debug.log
+npm-debug.log
