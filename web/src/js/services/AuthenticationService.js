@@ -10,7 +10,7 @@ export default {
   },
 
   profileUrl(token) {
-    return '' + UserStore.baseUrl() + '/profile/?token='+token ;
+    return '' + UserStore.baseUrl() + '/profile.json?token='+token ;
   },
 
   // Callback, when popup closes.
