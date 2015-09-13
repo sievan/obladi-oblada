@@ -45,7 +45,7 @@ React.render((
       <Route path="about" component={About} />
       <Route path="rentlist" component={RentList} />
       <Route path="add-item" component={ListingForm} />
-      <Route path="pay" component={Payment} />
+      <Route path="add_payment_option" component={Payment} />
       <Route path="authenticated" component={Authenticated} />
       <Route path="/rentable/:id" component={RentableItem} />
     </Route>
