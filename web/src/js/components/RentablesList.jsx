@@ -30,7 +30,7 @@ export default React.createClass({
     let {searchQuery, rentables} = this.state;
 
     var searchFn = this.isSearchMatch;
-    
+
     var rows = [];
     rentables.forEach(function(rentable) {
       if (searchFn(searchQuery, rentable))
@@ -60,8 +60,9 @@ export default React.createClass({
         return true; //no search
 
       searchQuery = searchQuery.toLowerCase(); // !mutate
+
       var searchString = ''.concat(rentable.description, rentable.title, rentable.owner.name);
-    
+
       return searchString.toLowerCase().indexOf(searchQuery) > -1;
     }
 });

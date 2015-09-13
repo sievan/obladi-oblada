@@ -22,6 +22,7 @@ const UserStore = assign({}, BaseStore, {
   getToken() {
     if(!data.token) {
       data.token = localStorage.getItem('token');
+      data.token = localStorage.getItem('user_id');
     }
 
     this.setCurrentUser();
@@ -43,11 +44,17 @@ const UserStore = assign({}, BaseStore, {
 
   setCurrentUser() {
     if (!!data.token) {
-      data.current_user = AuthenticationService.getCurrentUser(data.token)
+      AuthenticationService.getCurrentUser(data.token)
+      .then((a) => {
+        console.log(a.user_id);
+        localStorage.setItem('user_id', a.user_id);
+      });;
+      console.log("userid", data.current_user);
     }
   },
 
   getCurrentUser() {
+    console.log("current user", data.token, data.current_user);
     return data.current_user;
   },
 

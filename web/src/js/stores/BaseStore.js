@@ -18,6 +18,6 @@ export default assign({}, EventEmitter.prototype, {
   },
 
   baseUrl() {
-    return 'http://localhost:3000'; //'http://f4f0e449.ngrok.io';
+    return 'http://f4f0e449.ngrok.io';
   },
 });

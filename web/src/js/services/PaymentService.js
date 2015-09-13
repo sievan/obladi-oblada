@@ -2,8 +2,6 @@ import UserStore from '../stores/UserStore';
 
 export default {
   addPaymentMethod(nounce) {
-
-
     console.log("do payment", nounce);
 
     return new Promise(() => {

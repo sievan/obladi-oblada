@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/lib/Button';
 import { Router, Route, Link } from 'react-router'
 
 import RentableStore from '../stores/RentableStore';
+import UserStore from '../stores/UserStore';
 
 var defaults = {
     image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg'
@@ -41,8 +42,9 @@ export default React.createClass({
     }
     var data = new FormData();
     data.append('rental[rentable_id]', this.props.params.id);
-    data.append('rental[user_id]', 1); // TODO: change to real user id
-    fetch('http://localhost:3000/rentals', {
+
+    //data.append('rental[user_id]', user_id); // TODO: change to real user id
+    fetch(RentableStore.baseUrl() + '/rentals', {
       method: 'post',
       body: data
     })

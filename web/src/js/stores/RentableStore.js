@@ -51,7 +51,7 @@ const RentableStore = assign({}, BaseStore, {
   },
 
   getOne(id) {
-    fetchOld('http://localhost:3000/rentables/'+id+'.json', function(error, meta, body) {
+    fetchOld(this.baseUrl() + '/rentables/'+id+'.json', function(error, meta, body) {
       if (error) {
         return;
       }

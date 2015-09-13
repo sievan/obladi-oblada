@@ -33,7 +33,7 @@ export default {
   },
 
   getCurrentUser(token) {
-    fetch(this.profileUrl(token), {
+    return fetch(this.profileUrl(token), {
       method: 'get',
       header: {
         'Accept': 'application/json',

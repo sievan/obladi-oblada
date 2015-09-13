@@ -15,7 +15,6 @@ import MyRentals from './components/MyRentals.jsx';
 
 var App = React.createClass({
   componentWillMount() {
-
   },
 
   render() {
