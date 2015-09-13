@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/lib/Button';
 
 var Home = React.createClass({
   componentWillMount: function(){
@@ -14,8 +15,11 @@ var Home = React.createClass({
 
   render() {
     return (
-      <div className="fulhack" >
-        Welcome to obladi!
+      <div>
+      <h1 className="fulhack" >
+        For your needs now, <br/>and your consience later.
+      </h1>
+        <Button bsStyle="info" className="home-cta">Lets rent some stuff!</Button>
       </div>
     );
   }
