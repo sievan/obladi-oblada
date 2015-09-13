@@ -17,10 +17,18 @@ var style = {
 }
 
 export default React.createClass({
-
   getInitialState: function() {
     RentableStore.addChangeListener(this._onUpdate)
-    return {rentable: RentableStore.getOne(this.props.params.id)}
+    RentableStore.isBooked(this.props.params.id)
+    .then( (res) => {
+      this.setState({hasBeenBooked: res})
+    });
+
+    return {
+      rentable: RentableStore.getOne(this.props.params.id),
+      hasBeenBooked: false,
+      bookMessage: "Book!"
+    }
   },
 
   _onUpdate() {
@@ -28,6 +36,9 @@ export default React.createClass({
   },
 
   book: function() {
+    if (this.state.hasBeenBooked) {
+      return;
+    }
     var data = new FormData();
     data.append('rental[rentable_id]', this.props.params.id);
     data.append('rental[user_id]', 1); // TODO: change to real user id
@@ -35,13 +46,15 @@ export default React.createClass({
       method: 'post',
       body: data
     })
+
+    this.setState({hasBeenBooked: true, bookMessage: "Booked it!"});
   },
 
   render() {
     let {rentable} = this.state;
+    console.log(this.state);
 
     _.extendOwn(rentable.selectedRentable, defaults); //add from defaults that aren't present
-    console.log(this.state.rentable.selectedRentable)
 
     if(!this.state.rentable.selectedRentable) {
       return (
@@ -49,12 +62,15 @@ export default React.createClass({
       )
     }
     else {
+      var hidden = { display: 'none'}
       return (
         <div>
           <img style={style} src={this.state.rentable.selectedRentable.image} />
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
-          <Button bsStyle="success" onClick={this.book}>Book!</Button>
+
+          <Button bsStyle={!this.state.hasBeenBooked ? 'success' : 'default'} onClick={this.book}>{this.state.bookMessage}</Button>
+          <span style={!this.state.hasBeenBooked ? hidden : {}}>Waiting approval of the other partie</span>
         </div>
       );
     }
