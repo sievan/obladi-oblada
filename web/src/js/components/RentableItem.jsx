@@ -56,7 +56,7 @@ export default React.createClass({
   setHasBeenBooked(hasBeenBooked) {
     this.setState({hasBeenBooked: hasBeenBooked});
     if (hasBeenBooked) {
-      this.setState({bookMessage: "Booked it!"});
+      this.setState({bookMessage: "Awaiting aproval"});
     }
   },
 
@@ -70,15 +70,13 @@ export default React.createClass({
       )
     }
     else {
-      var hidden = { display: 'none'}
       return (
         <div className="rental-booking">
           <img style={style} src={UserStore.baseUrl() + '/uploads/' + this.state.rentable.selectedRentable.image} />
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
 
-          <Button bsStyle={!this.state.hasBeenBooked ? 'success' : 'default'} onClick={this.book}>{this.state.bookMessage}</Button>
-          <span style={!this.state.hasBeenBooked ? hidden : {}}>Waiting approval of the other partie</span>
+          <Button disabled={this.state.hasBeenBooked} bsStyle={!this.state.hasBeenBooked ? 'success' : 'default'} onClick={this.book}>{this.state.bookMessage}</Button>
         </div>
       );
     }
