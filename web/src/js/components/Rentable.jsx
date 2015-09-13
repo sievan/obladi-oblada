@@ -42,7 +42,7 @@ export default React.createClass({
         <div className="renter-info">
         <img src={rentable.renter.img}/>
         <h4>{rentable.renter.name}</h4>
-        <Button bsStyle="info">Contact now</Button>
+        <Button bsStyle="info" href={rentable.renter.uri}>Contact now</Button>
         </div>
         </div>
       </ListGroupItem>
