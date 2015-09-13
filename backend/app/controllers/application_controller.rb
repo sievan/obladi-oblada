@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= AuthenticationToken.find_by(token: params[:token]).try :user
-    # @current_user ||= User.find(session[:user])
-    @current_user ||= User.first()
+    @current_user ||= User.find_by(id: session[:user])
   end
 end
