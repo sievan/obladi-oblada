@@ -12,6 +12,10 @@ var defaults = {
     image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg'
 };
 
+var style = {
+  maxWidth: '100%'
+}
+
 export default React.createClass({
 
   getInitialState: function() {
@@ -47,7 +51,7 @@ export default React.createClass({
     else {
       return (
         <div>
-          <img src={this.state.rentable.selectedRentable.image} />
+          <img style={style} src={this.state.rentable.selectedRentable.image} />
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
           <Button bsStyle="success" onClick={this.book}>Book!</Button>
