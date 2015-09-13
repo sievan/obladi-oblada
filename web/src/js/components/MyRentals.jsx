@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import RentableStore from '../stores/RentableStore';
-import Rentable from './Rentable.jsx';
+import MyRentable from './MyRentable.jsx';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import Alert from 'react-bootstrap/lib/Alert';
 import {Button} from 'react-bootstrap';
@@ -9,7 +9,7 @@ export default React.createClass({
 
   getInitialState() {
     RentableStore.addChangeListener(this._onUpdate);
-    return RentableStore.getAll();
+    return RentableStore.getAll(1); // TODO: add real user id
   },
 
   _onUpdate() {
@@ -23,7 +23,7 @@ export default React.createClass({
       <div>
         <ListGroup>
         {rentables.map(rentable =>
-          <Rentable key={rentable.id} rentable={rentable}/>
+          <MyRentable key={rentable.id} rentable={rentable}/>
         )}
         </ListGroup>
       </div>
