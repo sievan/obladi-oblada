@@ -5,13 +5,29 @@
 .rentable-list_entry {
     display: flex;
     flex-flow: row wrap;
+    padding-right: 20px;
     
     img {
         height: 200px;
     }
     
-    div {
-        flex: 1;
+    .item-desc {
+        flex-grow: 1;
         margin: 20px;
+        min-width: 300px;
+    }
+
+    .renter-info {
+        text-align: center;
+        margin: auto;
+
+        img {
+            height: 100px;
+        }
+        
+        img, button {
+            display: block;
+            margin: auto;
+        }
     }
 }
