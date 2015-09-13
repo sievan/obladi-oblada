@@ -3,22 +3,25 @@ class BrainTreeController < ApplicationController
     @token = Braintree::ClientToken.generate
   end
 
-  def register_transaction
+  def add_payment_method
     result = Braintree::Customer.create(
       :first_name => "Charity",
       :last_name => "Smith",
       :payment_method_nonce => params[:nonce]
     )
     if result.success?
-      puts result.customer.id
-      puts result.customer.payment_methods[0].token
+      current_user.update brain_tree_id: result.customer.id
+
     else
       p result.errors
     end
   end
 
-  def add_payment_method
-    # TODO fix this!! Take care of nonce
-    render nothing: true
+  def pay_with_last_used_method
+    result = Braintree::Transaction.sale(
+      customer_id: "the_customer_id",
+      amount: "10.00"
+    )
+    @success = result.success?
   end
 end

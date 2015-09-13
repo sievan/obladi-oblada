@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
   def self.find_or_create_from_omniauth(omniauth_hash)
     authentication = Authentication.find_or_new_from_omniauth(omniauth_hash)
     unless authentication.user
-      authentication.update user: create(name: omniauth_hash[:info][:name])
+      puts omniauth_hash[:info]
+      authentication.user = create(name: omniauth_hash[:info][:name])
+      authentication.save
     end
     authentication.user
   end

@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
     session[:token] = params[:token]
     session[:callback] = params[:callback]
 
-    if session[:user]
-      puts params[:token]
+    if current_user
       AuthenticationToken.create(user: current_user, token: params[:token])
       redirect_to session[:callback]
     else
