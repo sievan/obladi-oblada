@@ -1,5 +1,6 @@
 import React from 'react';
 import {Input, Button, Alert} from 'react-bootstrap';
+import UserStore from '../stores/UserStore';
 
 export default React.createClass({
 
@@ -29,7 +30,7 @@ export default React.createClass({
     data.append('rentable[price]', price);
     data.append('rentable[image]', image.files[0]);
 
-    fetch('http://localhost:3000/rentables', {
+    fetch(UserStore.baseUrl() + '/rentables', {
       method: 'post',
       body: data
     }).then( (res) => {

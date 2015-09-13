@@ -22,7 +22,7 @@ const UserStore = assign({}, BaseStore, {
   getToken() {
     if(!data.token) {
       data.token = localStorage.getItem('token');
-      data.token = localStorage.getItem('user_id');
+      data.user_id = localStorage.getItem('user_id');
     }
 
     this.setCurrentUser();
