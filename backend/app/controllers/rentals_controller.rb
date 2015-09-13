@@ -4,7 +4,11 @@ class RentalsController < ApplicationController
   # GET /rentals
   # GET /rentals.json
   def index
-    @rentals = Rental.all
+    if params[:rentable_id]
+      @rentals = Rental.where(rentable_id: params[:rentable_id])
+    else
+      @rentals = Rental.all
+    end
   end
 
   # GET /rentals/1
