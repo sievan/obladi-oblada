@@ -6,7 +6,7 @@ var Home = React.createClass({
     document.body.style.backgroundImage = 'url("http://blog.visitnapavalley.com/wp-content/uploads/2014/07/napa-valley-bicycles-iStock_000015544672Large.jpg")';
 
     document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'left 20%';
+    document.body.style.backgroundPosition = 'left 17%';
   },
   componentWillUnmount: function(){
     document.body.style.background = null;
