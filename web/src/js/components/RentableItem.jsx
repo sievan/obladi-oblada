@@ -28,7 +28,7 @@ export default React.createClass({
     return {
       rentable: RentableStore.getOne(this.props.params.id),
       hasBeenBooked: false,
-      bookMessage: "Book!"
+      bookMessage: "I want to rent this"
     }
   },
 
