@@ -14,7 +14,7 @@ export default React.createClass({
     console.log(this.props);
     var data = new FormData();
     data.append('rental[approved_by_owner]', true);
-    fetch('http://localhost:3000/rentals/' + this.props.rental.id, {
+    fetch('http://f4f0e449.ngrok.io/rentals/' + this.props.rental.id, {
       method: 'post',
       body: data
     })
