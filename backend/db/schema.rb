@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20150912233010) do
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
+  create_table "customers", force: :cascade do |t|
+    t.integer  "rentable_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "customers", ["rentable_id"], name: "index_customers_on_rentable_id", using: :btree
+  add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
+
   create_table "owners", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -75,6 +85,8 @@ ActiveRecord::Schema.define(version: 20150912233010) do
 
   add_foreign_key "authentication_tokens", "users"
   add_foreign_key "authentications", "users"
+  add_foreign_key "customers", "rentables"
+  add_foreign_key "customers", "users"
   add_foreign_key "owners", "users"
   add_foreign_key "rentables", "owners"
   add_foreign_key "rentals", "rentables"
