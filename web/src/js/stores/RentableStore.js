@@ -37,7 +37,7 @@ const RentableStore = assign({}, BaseStore, {
       _data['rentables'] = JSON.parse(body.toString());
 
       _data['rentables'].forEach(function(rentable) {
-        _.extendOwn(rentable, missing_server_data);
+        _.defaults(rentable, missing_server_data);
       });
       
       RentableStore.emitChange();
