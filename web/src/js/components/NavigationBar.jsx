@@ -23,7 +23,7 @@ var NavigationBar = React.createClass({
     if (this.state.isSignedIn) {
       return (
         <div>
-          <Navbar brand="HandyMan" inverse toggleNavKey={0}>
+          <Navbar brand="Obla" inverse toggleNavKey={0}>
             <Nav eventKey={0}>
               <NavItem><Link to="/rentlist">I wanna rent someting!</Link></NavItem>
               <NavItem><Link to="/add-item">I have something to rent out!</Link></NavItem>
