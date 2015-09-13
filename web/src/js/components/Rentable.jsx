@@ -32,7 +32,7 @@ export default React.createClass({
         <img src={rentable.image} />
         <div>
           <Link to={`/rentable/${rentable.id}`}>
-            <h4>{rentable.title}</h4>
+        <h4>{rentable.title} ({rentable.id})</h4>
           </Link>
         <p>{rentable.description}</p>
         </div>
