@@ -1,10 +1,10 @@
 import React from 'react';
-import {Input, Button} from 'react-bootstrap';
+import {Input, Button, Alert} from 'react-bootstrap';
 
 export default React.createClass({
 
   getInitialState() {
-    return {invalid: {description: false, title: false, price: false}}
+    return {invalid: {description: false, title: false, price: false}, error: null}
   },
 
   handleSubmit: function(e) {
@@ -32,23 +32,42 @@ export default React.createClass({
     fetch('http://localhost:3000/rentables', {
       method: 'post',
       body: data
-    })
+    }).then( (res) => {
+      return res.json();
+    }).then( (res) => {
+      if (!res.ok) {
+        console.log('not ok', res );
+        this.setState({error: "Could not save! :/"});
+      }
+      console.log("success", res);
 
-    this.refs.title.getInputDOMNode().value = '';
-    this.refs.description.getInputDOMNode().value = '';
-    this.refs.price.getInputDOMNode().value = '';
-    this.refs.image.getInputDOMNode().value = '';
-    return;
+      this.refs.title.getInputDOMNode().value = '';
+      this.refs.description.getInputDOMNode().value = '';
+      this.refs.price.getInputDOMNode().value = '';
+      this.refs.image.getInputDOMNode().value = '';
+
+    }).catch( (err) => {
+      console.error("err", err);
+      this.setState({error: "Could not save! Please try again."});
+    });
   },
 
   render: function() {
     var {invalid} = this.state;
     console.log(invalid);
+    var errorMessage = {};
+
+    if (this.state.error) {
+      errorMessage = (<Alert bsStyle="warning">
+        <strong>{this.state.error}</strong>
+      </Alert>)
+    }
 
     return (
       <div className="add_rentable">
         <form name="rentable" >
           <h1 className="title">List your product or service</h1>
+          {errorMessage}
           <Input type="text" bsStyle={!invalid.title ? null : "error"} label="Name" placeholder="Name of item" ref="title" />
           <Input type="text" bsStyle={!invalid.description ? null : "error"} label="Description" placeholder="Short description" ref="description" />
           <Input type="text" bsStyle={!invalid.price ? null : "error"} label="Price" placeholder="Price" ref="price" />
