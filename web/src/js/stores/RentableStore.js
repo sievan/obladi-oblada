@@ -17,13 +17,11 @@ var missing_server_data = {  //var fan är avis?
   }
 };
 
-
 // data storage
 let _data = {
   rentables: [],
   selectedRentable: null
 };
-
 
 // Facebook style store creation.
 const RentableStore = assign({}, BaseStore, {
@@ -40,7 +38,7 @@ const RentableStore = assign({}, BaseStore, {
       _data['rentables'].forEach(function(rentable) {
         _.defaults(rentable, missing_server_data);
       });
-      
+
       RentableStore.emitChange();
     });
 

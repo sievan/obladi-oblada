@@ -13,6 +13,7 @@ export default {
     return '' + UserStore.baseUrl() + '/profile/?token='+token ;
   },
 
+  // Callback, when popup closes.
   getSignupToken(token) {
     fetch(this.verifyUrl(token), {
       method: 'get',
@@ -24,11 +25,10 @@ export default {
       return res.json();
     })
     .then( (res) => {
-      console.log(res);
       var token = res.token;
       UserStore.setToken(token);
     }).catch( (err) => {
-      console.log("err", err);
+      console.log("getSignupToken err:", err);
     });
   },
 

@@ -13,6 +13,10 @@ import NavigationBar from './components/NavigationBar.jsx';
 import Authenticated from './components/pages/Authenticated.jsx';
 
 var App = React.createClass({
+  componentWillMount() {
+
+  },
+
   render() {
     return (
       <div>
@@ -24,8 +28,7 @@ var App = React.createClass({
       </div>
     )
   }
-})
-
+});
 
 var RentList = React.createClass({
   render() {
@@ -33,7 +36,7 @@ var RentList = React.createClass({
       <RentablesList />
     )
   }
-})
+});
 
 React.render((
   <Router>
