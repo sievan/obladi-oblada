@@ -71,6 +71,10 @@ class RentalsController < ApplicationController
     end
   end
 
+  def options
+    head(:ok)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rental
@@ -79,6 +83,6 @@ class RentalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rental_params
-      params.require(:rental).permit(:rentable_id, :user_id)
+      params.require(:rental).permit(:rentable_id, :user_id, :approved_by_owner)
     end
 end

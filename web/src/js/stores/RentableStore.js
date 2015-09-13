@@ -26,8 +26,13 @@ let _data = {
 // Facebook style store creation.
 const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
-  getAll() {
-    fetchOld(this.baseUrl() + '/rentables.json', function(error, meta, body) {
+  getAll(userId = null) {
+    var param = '';
+    if(userId) {
+      param = '?owner_id='+userId;
+    }
+
+    fetchOld(this.baseUrl() + '/rentables.json'+param, function(error, meta, body) {
       if (error) {
         console.log("rentables fetching failed");
         return;
