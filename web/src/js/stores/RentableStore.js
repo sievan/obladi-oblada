@@ -1,9 +1,21 @@
+var _ = require('underscore');
 import Dispatcher from '../Dispatcher';
 import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
 
 var fetch = require('fetch').fetchUrl;
+
+var missing_server_data = {  //var fan är avis?
+  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
+  title: '<insert title here>',
+  renter: {
+    name: 'T. Testsson',
+    img: 'http://www.danubeconsul.eu/female.jpg',
+    uri: 'https://www.facebook.com/jacob.sievers?fref=ts'
+  }
+};
+
 
 // data storage
 let _data = {
@@ -23,6 +35,11 @@ const RentableStore = assign({}, BaseStore, {
       }
 
       _data['rentables'] = JSON.parse(body.toString());
+
+      _data['rentables'].forEach(function(rentable) {
+        _.extendOwn(rentable, missing_server_data);
+      });
+      
       RentableStore.emitChange();
     });
 

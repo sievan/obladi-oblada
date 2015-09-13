@@ -1,5 +1,3 @@
-var _ = require('underscore');
-
 import React, {PropTypes} from 'react';
 import ActionCreator from '../actions/TodoActionCreators';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
@@ -8,16 +6,6 @@ import Input from 'react-bootstrap/lib/Input';
 
 import { Router, Route, Link } from 'react-router';
 
-var defaults = {
-  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
-  title: '<insert title here>',
-  renter: {
-    name: 'T. Testsson',
-    img: 'http://www.danubeconsul.eu/female.jpg',
-    uri: 'https://www.facebook.com/jacob.sievers?fref=ts'
-  }
-};
-
 export default React.createClass({
   propTypes: {
     rentable: PropTypes.object.isRequired
@@ -25,7 +13,6 @@ export default React.createClass({
 
   render() {
     let {rentable} = this.props;
-    _.extendOwn(rentable, defaults); //add from defaults that aren't present
 
     return (
       <ListGroupItem>
