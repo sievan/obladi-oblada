@@ -20,12 +20,12 @@ export default React.createClass({
 
         <div className="rentable-list_entry">
           <img src={UserStore.baseUrl() + "/uploads/" + rentable.image} />
-            <div className="item-desc">
-              <Link to={`/rentable/${rentable.id}`}>
+          <div className="item-desc">
+            <Link to={`/rentable/${rentable.id}`}>
             <h4>{rentable.title}</h4>
               </Link>
             <p>{rentable.description}</p>
-            </div>
+          </div>
           <div className="owner-info">
             <img src={rentable.owner.img}/>
             <h4>{rentable.owner.name}</h4>
