@@ -33,11 +33,10 @@ export default React.createClass({
       method: 'post',
       body: data
     }).then( (res) => {
-      return res.json();
-    }).then( (res) => {
       if (!res.ok) {
         console.log('not ok', res );
         this.setState({error: "Could not save! :/"});
+        return;
       }
       console.log("success", res);
 
@@ -45,6 +44,8 @@ export default React.createClass({
       this.refs.description.getInputDOMNode().value = '';
       this.refs.price.getInputDOMNode().value = '';
       this.refs.image.getInputDOMNode().value = '';
+      this.setState({error: ""});
+      window.location.href = '#/rentlist';
 
     }).catch( (err) => {
       console.error("err", err);
