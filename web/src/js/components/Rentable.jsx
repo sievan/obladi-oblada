@@ -18,18 +18,18 @@ export default React.createClass({
       <ListGroupItem>
 
         <div className="rentable-list_entry">
-        <img src={rentable.image} />
-          <div className="item-desc">
-            <Link to={`/rentable/${rentable.id}`}>
-          <h4>{rentable.title}</h4>
-            </Link>
-          <p>{rentable.description}</p>
+          <img src={rentable.image} />
+            <div className="item-desc">
+              <Link to={`/rentable/${rentable.id}`}>
+            <h4>{rentable.title}</h4>
+              </Link>
+            <p>{rentable.description}</p>
+            </div>
+          <div className="owner-info">
+            <img src={rentable.owner.img}/>
+            <h4>{rentable.owner.name}</h4>
+            <Button bsStyle="info" href={rentable.owner.uri}>Contact now</Button>
           </div>
-
-        <div className="owner-info">
-        <img src={rentable.owner.img}/>
-        <h4>{rentable.owner.name}</h4>
-        <Button bsStyle="info" href={rentable.owner.uri}>Contact now</Button>
         </div>
       </ListGroupItem>
     );

@@ -9,6 +9,7 @@ export default React.createClass({
 
   getInitialState() {
     RentableStore.addChangeListener(this._onUpdate);
+
     return RentableStore.getAll(1); // TODO: add real user id
   },
 
