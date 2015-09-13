@@ -60,7 +60,7 @@ export default React.createClass({
         return true; //no search
 
       searchQuery = searchQuery.toLowerCase(); // !mutate
-      var searchString = ''.concat(rentable.description, rentable.title, rentable.renter.name);
+      var searchString = ''.concat(rentable.description, rentable.title, rentable.owner.name);
     
       return searchString.toLowerCase().indexOf(searchQuery) > -1;
     }
