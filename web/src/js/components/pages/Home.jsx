@@ -17,7 +17,7 @@ var Home = React.createClass({
   
   onClickRedirect() {
     console.log('clicked');
-    window.location.href = "/#/rentlist;"
+    window.location.href = "/#/rentlist";
   },
 
   render() {
