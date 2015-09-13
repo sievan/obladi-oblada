@@ -11,6 +11,7 @@ import Home from './components/pages/Home.jsx';
 import About from './components/pages/About.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 import Authenticated from './components/pages/Authenticated.jsx';
+import MyRentals from './components/MyRentals.jsx';
 
 var App = React.createClass({
   componentWillMount() {
@@ -47,6 +48,7 @@ React.render((
       <Route path="add-item" component={ListingForm} />
       <Route path="add_payment_option" component={Payment} />
       <Route path="authenticated" component={Authenticated} />
+      <Route path="my-rentals" component={MyRentals} />
       <Route path="/rentable/:id" component={RentableItem} />
     </Route>
   </Router>
