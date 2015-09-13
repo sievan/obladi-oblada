@@ -29,13 +29,13 @@ export default React.createClass({
       <ListGroupItem>
 
         <div className="rentable-list_entry">
-        <img src={rentable.image} />
-        <div>
-          <Link to={`/rentable/${rentable.id}`}>
-        <h4>{rentable.title} ({rentable.id})</h4>
-          </Link>
-        <p>{rentable.description}</p>
-        </div>
+          <img src={rentable.image} />
+          <div>
+            <Link to={`/rentable/${rentable.id}`}>
+              <h4>{rentable.title} ({rentable.id})</h4>
+            </Link>
+            <p>{rentable.description}</p>
+          </div>
         </div>
       </ListGroupItem>
     );
