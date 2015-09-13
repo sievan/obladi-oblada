@@ -5,7 +5,7 @@ class RentablesController < ApplicationController
   # GET /rentables.json
   def index
     if params[:owner_id]
-      User.find_by(:id).rentables
+      @rentables = User.find_by(:id).rentables
     else
       @rentables = Rentable.all
     end
