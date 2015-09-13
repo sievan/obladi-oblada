@@ -8,7 +8,6 @@ var _  = require('underscore');
 var fetchOld = require('fetch').fetchUrl;
 
 var missing_server_data = {  //var fan är avis?
-  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
   title: '<insert title here>',
   owner: {
     name: 'T. Testsson',
