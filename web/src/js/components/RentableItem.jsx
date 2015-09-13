@@ -76,6 +76,9 @@ export default React.createClass({
           <h2>{this.state.rentable.selectedRentable.title}</h2>
           <p>{this.state.rentable.selectedRentable.description}</p>
 
+          <Button style={{marginRight: '20px'}} bsStyle="info" href={"mailto:"+"jacosiev@gmail.com"} target="_blank">Contact now</Button>
+
+          
           <Button disabled={this.state.hasBeenBooked} bsStyle={!this.state.hasBeenBooked ? 'success' : 'default'} onClick={this.book}>{this.state.bookMessage}</Button>
         </div>
       );

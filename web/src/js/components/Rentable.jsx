@@ -26,10 +26,9 @@ export default React.createClass({
               </Link>
             <p>{rentable.description}</p>
           </div>
-          <div className="owner-info">
+            <div className="owner-info">
             <img src={rentable.owner.img}/>
             <h4>{rentable.owner.name}</h4>
-            <Button bsStyle="info" href={"mailto:"+(rentable.owner.email || "jacosiev@gmail.com")} target="_blank">Contact now</Button>
           </div>
         </div>
       </ListGroupItem>
