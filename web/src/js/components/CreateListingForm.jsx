@@ -72,8 +72,8 @@ export default React.createClass({
           <h1 className="title">List your product or service</h1>
           {errorMessage}
           <Input type="text" bsStyle={!invalid.title ? null : "error"} label="Name" placeholder="Name of item" ref="title" />
-          <Input type="text" bsStyle={!invalid.description ? null : "error"} label="Description" placeholder="Short description" ref="description" />
-          <Input type="text" bsStyle={!invalid.price ? null : "error"} label="Price" placeholder="Price" ref="price" />
+          <Input type="textarea" bsStyle={!invalid.description ? null : "error"} label="Description" placeholder="Short description" ref="description" />
+          <Input type="text" bsStyle={!invalid.price ? null : "error"} label="Price" placeholder="Price" addonAfter="SEK" ref="price" />
           <Input type="file" ref="image" />
           <Button bsStyle="success" bsSize="large" block onClick={this.handleSubmit}>Post</Button>
         </form>
