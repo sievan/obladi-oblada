@@ -3,7 +3,7 @@ var _ = require('underscore');
 import React, {PropTypes} from 'react';
 import ActionCreator from '../actions/TodoActionCreators';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import Button from 'react-bootstrap/lib/button';
+import Button from 'react-bootstrap/lib/Button';
 import { Router, Route, Link } from 'react-router'
 
 import RentableStore from '../stores/RentableStore';
