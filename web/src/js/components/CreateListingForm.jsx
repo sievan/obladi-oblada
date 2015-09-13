@@ -29,7 +29,7 @@ export default React.createClass({
     data.append('rentable[description]', description);
     data.append('rentable[price]', price);
     data.append('rentable[image]', image.files[0]);
-    data.append('rentable[owner_id]', UserStore.getCurrentUser());
+    data.append('rentable[user_id]', UserStore.getCurrentUser());
 
     fetch(UserStore.baseUrl() + '/rentables.json', {
       method: 'post',

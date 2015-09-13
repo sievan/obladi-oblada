@@ -7,14 +7,14 @@ import assign from 'object-assign';
 var _  = require('underscore');
 var fetchOld = require('fetch').fetchUrl;
 
-var missing_server_data = {  //var fan är avis?
+/*var missing_server_data = {  //var fan är avis?
   title: '<insert title here>',
-  owner: {
+  user: {
     name: 'T. Testsson',
     img: 'http://www.danubeconsul.eu/female.jpg',
     uri: 'https://www.facebook.com/jacob.sievers?fref=ts'
   }
-};
+};*/
 
 // data storage
 let _data = {
@@ -28,7 +28,7 @@ const RentableStore = assign({}, BaseStore, {
   getAll(userId = null) {
     var param = '';
     if(userId) {
-      param = '?owner_id='+userId;
+      param = '?user_id='+userId;
     }
 
     fetchOld(this.baseUrl() + '/rentables.json'+param, function(error, meta, body) {
@@ -37,11 +37,11 @@ const RentableStore = assign({}, BaseStore, {
         return;
       }
 
+
+
       _data['rentables'] = JSON.parse(body.toString());
 
-      _data['rentables'].forEach(function(rentable) {
-        _.defaults(rentable, missing_server_data);
-      });
+      console.log("body", _data['rentables']);
 
       RentableStore.emitChange();
     });
