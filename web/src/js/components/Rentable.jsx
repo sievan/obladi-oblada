@@ -26,10 +26,10 @@ export default React.createClass({
           <p>{rentable.description}</p>
           </div>
 
-        <div className="renter-info">
-        <img src={rentable.renter.img}/>
-        <h4>{rentable.renter.name}</h4>
-        <Button bsStyle="info" href={rentable.renter.uri}>Contact now</Button>
+        <div className="owner-info">
+        <img src={rentable.owner.img}/>
+        <h4>{rentable.owner.name}</h4>
+        <Button bsStyle="info" href={rentable.owner.uri}>Contact now</Button>
         </div>
         </div>
       </ListGroupItem>

@@ -10,7 +10,7 @@ var fetchOld = require('fetch').fetchUrl;
 var missing_server_data = {  //var fan är avis?
   image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
   title: '<insert title here>',
-  renter: {
+  owner: {
     name: 'T. Testsson',
     img: 'http://www.danubeconsul.eu/female.jpg',
     uri: 'https://www.facebook.com/jacob.sievers?fref=ts'
