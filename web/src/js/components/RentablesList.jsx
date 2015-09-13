@@ -29,9 +29,11 @@ export default React.createClass({
   render() {
     let {searchQuery, rentables} = this.state;
 
+    var searchFn = this.isSearchMatch;
+    
     var rows = [];
     rentables.forEach(function(rentable) {
-      if (searchQuery == '' || rentable.description.indexOf(searchQuery) > -1)
+      if (searchFn(searchQuery, rentable))
         rows.push(<Rentable key={rentable.id} rentable={rentable}/>);
     });
 
@@ -50,5 +52,16 @@ export default React.createClass({
         </ListGroup>
       </div>
     );
-  }
+  },
+
+  // true = keep in results
+  isSearchMatch(searchQuery, rentable) {
+      if(searchQuery.length === 0)
+        return true; //no search
+
+      searchQuery = searchQuery.toLowerCase(); // !mutate
+      var searchString = ''.concat(rentable.description, rentable.title, rentable.renter.name);
+    
+      return searchString.toLowerCase().indexOf(searchQuery) > -1;
+    }
 });
