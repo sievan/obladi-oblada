@@ -4,10 +4,11 @@ import React, {PropTypes} from 'react';
 import ActionCreator from '../actions/TodoActionCreators';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import Input from 'react-bootstrap/lib/Input';
-import { Router, Route, Link } from 'react-router'
+
+import { Router, Route, Link } from 'react-router';
 
 var defaults = {
-    image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg'
+  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg'
 };
 
 export default React.createClass({
