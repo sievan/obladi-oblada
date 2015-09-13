@@ -4,7 +4,8 @@ import Constants from '../Constants';
 import BaseStore from './BaseStore';
 import assign from 'object-assign';
 
-var fetch = require('fetch').fetchUrl;
+var _  = require('underscore');
+var fetchOld = require('fetch').fetchUrl;
 
 var missing_server_data = {  //var fan är avis?
   image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
@@ -28,7 +29,7 @@ let _data = {
 const RentableStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
-    fetch(this.baseUrl() + '/rentables.json', function(error, meta, body) {
+    fetchOld(this.baseUrl() + '/rentables.json', function(error, meta, body) {
       if (error) {
         console.log("rentables fetching failed");
         return;
@@ -47,7 +48,7 @@ const RentableStore = assign({}, BaseStore, {
   },
 
   getOne(id) {
-    fetch('http://localhost:3000/rentables/'+id+'.json', function(error, meta, body) {
+    fetchOld('http://localhost:3000/rentables/'+id+'.json', function(error, meta, body) {
       if (error) {
         return;
       }
@@ -56,6 +57,25 @@ const RentableStore = assign({}, BaseStore, {
     });
 
     return _data;
+  },
+
+  isBooked(rentables_id) {
+    console.log("rentables_id", rentables_id);
+    return fetch(this.baseUrl() + '/rentals.json?rentable_id=' + rentables_id)
+    .then( (res) => {
+      return res.json();
+    }).then( (rentals) => {
+      var current_user = 1;
+      var returnValue = _.chain(rentals)
+        .filter((rental) => {
+          return rental.user_id === current_user;
+        })
+        .size()
+        .value();
+
+      return returnValue !== 0;
+    });
+
   },
 
   // register store with dispatcher, allowing actions to flow through
