@@ -8,7 +8,12 @@ import Input from 'react-bootstrap/lib/Input';
 import { Router, Route, Link } from 'react-router';
 
 var defaults = {
-  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg'
+  image: 'http://www.stansfieldmotors.com/uploads/missing_image.jpg',
+  title: '<insert title here>',
+  renter: {
+    name: 'Testman Testsson',
+    uri: 'https://www.facebook.com/jacob.sievers?fref=ts'
+  }
 };
 
 export default React.createClass({
@@ -27,9 +32,8 @@ export default React.createClass({
         <div className="rentable-list_entry">
         <img src={rentable.image} />
         <div>
-          {rentable.url}
-          <Link to={`/rentable/${rentable.id}`}>Home
-            <h4>This is the title of item {rentable.id}</h4>
+          <Link to={`/rentable/${rentable.id}`}>
+            <h4>{rentable.title}</h4>
           </Link>
         <p>{rentable.description}</p>
         </div>

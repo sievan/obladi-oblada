@@ -5,14 +5,13 @@
 .rentable-list_entry {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-
+    
     img {
         height: 200px;
     }
     
     div {
-        
+        flex: 1;
+        margin: 20px;
     }
 }
-
