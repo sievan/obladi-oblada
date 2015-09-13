@@ -7,6 +7,7 @@ class RentablesController < ApplicationController
     if params[:owner_id]
       temp = Rentable.where(owner_id: params[:owner_id]).as_json
       @rentables = temp.map{ |b| b["rentals"] = Rental.where(rentable_id: b["id"]).as_json; b.symbolize_keys! }
+      @rentables.each{ |a| a[:rentals] = a[:rentals].map{ |b| b[:user_name] = User.find(b["user_id"])[:name]; b } }
     else
       @rentables = Rentable.all
     end
