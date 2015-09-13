@@ -31,7 +31,6 @@ export default React.createClass({
         <h4>{rentable.owner.name}</h4>
         <Button bsStyle="info" href={rentable.owner.uri}>Contact now</Button>
         </div>
-        </div>
       </ListGroupItem>
     );
   }

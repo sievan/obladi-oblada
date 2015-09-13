@@ -5,7 +5,8 @@ class RentablesController < ApplicationController
   # GET /rentables.json
   def index
     if params[:owner_id]
-      @rentables = Rentable.where(owner_id: params[:owner_id])
+      temp = Rentable.where(owner_id: params[:owner_id]).as_json
+      @rentables = temp.map{ |b| b["rentals"] = Rental.where(rentable_id: b["id"]).as_json; b.symbolize_keys! }
     else
       @rentables = Rentable.all
     end
