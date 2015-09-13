@@ -6,13 +6,20 @@ import assign from 'object-assign';
 import AuthenticationService from '../services/AuthenticationService';
 
 // data storage
-var data = {};
+var data = {
+  token: null,
+  current_user: null
+};
 
 // Facebook style store creation.
 const UserStore = assign({}, BaseStore, {
+  fetchStoredState() {
+    data.token = localStorage.getItem('token');
+    this.setCurrentUser();
+  },
+
   // public methods used by Controller-View to operate on data
   getToken() {
-    console.log(data);
     if(!data.token) {
       data.token = localStorage.getItem('token');
     }
@@ -24,7 +31,6 @@ const UserStore = assign({}, BaseStore, {
 
   isSignedIn() {
     var token = this.getToken();
-    console.log(token, !!data.token);
     return !!data.token
   },
 
