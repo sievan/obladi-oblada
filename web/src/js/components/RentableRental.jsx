@@ -14,17 +14,17 @@ export default React.createClass({
     console.log(this.props);
     var data = new FormData();
     data.append('rental[approved_by_owner]', true);
-    fetch('http://f4f0e449.ngrok.io/rentals/' + this.props.rental.id, {
+    fetch('http://f4f0e449.ngrok.io/rentals/' + this.props.rental.rental.id, {
       method: 'post',
       body: data
     })
-    this.props.rental.approved_by_owner = true;
+    this.props.rental.rental.approved_by_owner = true;
     this.forceUpdate();
   },
 
   render() {
     let {rental} = this.props;
-    if(this.props.rental.approved_by_owner) {
+    if(this.props.rental.rental.approved_by_owner) {
       return (
         <div>Rental approved. Money is on its way. </div>
       );
@@ -32,7 +32,7 @@ export default React.createClass({
     else {
       return (
         <div>
-          <div>{this.props.rental.user_name} wants to rent this!</div>
+          <div>{this.props.rental.user.name} wants to rent this!</div>
           <Button bsStyle="success" onClick={this.approveRental} >Approve rental</Button>
         </div>
       );
