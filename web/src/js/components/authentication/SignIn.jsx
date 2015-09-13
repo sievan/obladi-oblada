@@ -72,7 +72,7 @@ var SignIn= React.createClass({
       } else {
         return (
           <div>
-            <Button bsStyle="success" onClick={this.handleAuthenticate} >Login with paypal</Button>
+            <Button bsStyle="success" onClick={this.handleAuthenticate}>Login with paypal</Button>
           </div>
         )
       }

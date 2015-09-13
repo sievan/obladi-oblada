@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
       AuthenticationToken.create(user: current_user, token: params[:token])
       redirect_to session[:callback]
     else
-      redirect_to "/auth/#{params[:provider] || 'paypal' }"
+      AuthenticationToken.create(user: current_user, token: params[:token])
+      redirect_to session[:callback]
+      # redirect_to "/auth/#{params[:provider] || 'paypal' }"
     end
   end
 
@@ -29,8 +31,7 @@ class SessionsController < ApplicationController
 
   def profile
     @token = AuthenticationToken.find_by token: params[:token]
-    puts @token
-    render nothing: true, status: :not_found unless @token
+    puts @token.id
   end
 
   private
