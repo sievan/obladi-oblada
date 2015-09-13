@@ -31,7 +31,7 @@ export default React.createClass({
     data.append('rentable[image]', image.files[0]);
     data.append('rentable[owner_id]', UserStore.getCurrentUser());
 
-    fetch(UserStore.baseUrl() + '/rentables', {
+    fetch(UserStore.baseUrl() + '/rentables.json', {
       method: 'post',
       body: data
     }).then( (res) => {
