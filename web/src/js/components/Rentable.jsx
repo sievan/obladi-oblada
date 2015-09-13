@@ -7,6 +7,8 @@ import UserStore from '../stores/UserStore';
 
 import { Router, Route, Link } from 'react-router';
 
+
+
 export default React.createClass({
   propTypes: {
     rentable: PropTypes.object.isRequired
@@ -14,6 +16,10 @@ export default React.createClass({
 
   render() {
     let {rentable} = this.props;
+
+    var defValues = {
+      profileImg: 'http://www.danubeconsul.eu/female.jpg'
+    };
 
     return (
       <ListGroupItem>
@@ -27,9 +33,9 @@ export default React.createClass({
             <p>{rentable.description}</p>
           </div>
           <div className="owner-info">
-            <img src={rentable.owner.img}/>
-            <h4>{rentable.owner.name}</h4>
-            <Button bsStyle="info" href={"mailto:"+(rentable.owner.email || "jacosiev@gmail.com")} target="_blank">Contact now</Button>
+            <img src={defValues.profileImg}/>
+            <h4>{ !!rentable.user ? rentable.user.name : ""}</h4>
+            <Button bsStyle="info" href={"mailto:"+("jacosiev@gmail.com")} target="_blank">Contact now</Button>
           </div>
         </div>
       </ListGroupItem>

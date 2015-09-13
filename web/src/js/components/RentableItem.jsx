@@ -10,7 +10,8 @@ import RentableStore from '../stores/RentableStore';
 import UserStore from '../stores/UserStore';
 
 var defaults = {
-    image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg'
+    image: 'http://media.treehugger.com/assets/images/2015/04/1-haibike-xduro-nduro-pro.jpg.662x0_q70_crop-scale.jpg',
+    profileImg: 'http://www.danubeconsul.eu/female.jpg'
 };
 
 var style = {
