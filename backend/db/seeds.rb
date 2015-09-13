@@ -8,6 +8,8 @@
 
 names =  ["Jocke", "Osquar", "Lasse Kongo", "Embraquel D Tuta"]
 
+Authentication.destroy_all
+AuthenticationToken.destroy_all
 Rental.destroy_all
 Rentable.destroy_all
 Owner.destroy_all
