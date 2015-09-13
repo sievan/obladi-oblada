@@ -17,7 +17,6 @@ var defaults = {
 };
 
 export default React.createClass({
-  
   propTypes: {
     rentable: PropTypes.object.isRequired
   },
@@ -25,7 +24,7 @@ export default React.createClass({
   render() {
     let {rentable} = this.props;
     _.extendOwn(rentable, defaults); //add from defaults that aren't present
-    
+
     return (
       <ListGroupItem>
 

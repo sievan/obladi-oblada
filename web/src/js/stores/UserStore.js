@@ -37,10 +37,7 @@ const UserStore = assign({}, BaseStore, {
 
   setCurrentUser() {
     if (!!data.token) {
-      AuthenticationService.getCurrentUser(data.token)
-      .then( (user) => {
-        data.current_user = user;
-      });
+      data.current_user = AuthenticationService.getCurrentUser(data.token)
     }
   },
 
