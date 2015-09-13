@@ -4,7 +4,12 @@ class RentablesController < ApplicationController
   # GET /rentables
   # GET /rentables.json
   def index
-    @rentables = Rentable.all
+    if params[:owner_id]
+      temp = Rentable.where(owner_id: params[:owner_id]).as_json
+      @rentables = temp.map{ |b| b["rentals"] = Rental.where(rentable_id: b["id"]).as_json; b.symbolize_keys! }
+    else
+      @rentables = Rentable.all
+    end
   end
 
   # GET /rentables/1
