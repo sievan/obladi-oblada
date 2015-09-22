@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912233010) do
+ActiveRecord::Schema.define(version: 20150913104558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,14 +56,12 @@ ActiveRecord::Schema.define(version: 20150912233010) do
   create_table "rentables", force: :cascade do |t|
     t.string   "description"
     t.decimal  "price"
-    t.integer  "owner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "title"
     t.string   "image"
+    t.integer  "user_id"
   end
-
-  add_index "rentables", ["owner_id"], name: "index_rentables_on_owner_id", using: :btree
 
   create_table "rentals", force: :cascade do |t|
     t.integer  "rentable_id"
@@ -81,6 +79,7 @@ ActiveRecord::Schema.define(version: 20150912233010) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "brain_tree_id"
+    t.string   "image_url"
   end
 
   add_foreign_key "authentication_tokens", "users"
@@ -88,7 +87,6 @@ ActiveRecord::Schema.define(version: 20150912233010) do
   add_foreign_key "customers", "rentables"
   add_foreign_key "customers", "users"
   add_foreign_key "owners", "users"
-  add_foreign_key "rentables", "owners"
   add_foreign_key "rentals", "rentables"
   add_foreign_key "rentals", "users"
 end

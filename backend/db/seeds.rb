@@ -12,7 +12,6 @@ Authentication.destroy_all
 AuthenticationToken.destroy_all
 Rental.destroy_all
 Rentable.destroy_all
-Owner.destroy_all
 User.destroy_all
 
 names.each do |n|
@@ -20,9 +19,8 @@ names.each do |n|
 end
 
 User.all.each do |u|
-  Owner.create user: u
   (1..5).to_a.sample.times do |n|
-    Rentable.create owner: u.owner, description: "#{u.name}s coola grej #{n}", title: "Item #{n}"
+    u.rentables.create description: "#{u.name}s coola grej #{n}", title: "Item #{n}"
   end
 end
 

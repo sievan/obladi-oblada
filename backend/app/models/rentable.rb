@@ -1,10 +1,8 @@
 class Rentable < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :user
   has_many :rentals
 
-  def owner_name
-    owner.user.name
-  end
+  validates :user, presence: true
 
   def image=(image)
     uploaded_io = image

@@ -17,7 +17,7 @@
       <tr>
         <td><%= rentable.description %></td>
         <td><%= rentable.price %></td>
-        <td><%= rentable.owner %></td>
+        <td><%= rentable.user.name %></td>
         <td><%= link_to 'Show', rentable %></td>
         <td><%= link_to 'Edit', edit_rentable_path(rentable) %></td>
         <td><%= link_to 'Destroy', rentable, method: :delete, data: { confirm: 'Are you sure?' } %></td>

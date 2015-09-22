@@ -4,8 +4,8 @@ class RentablesController < ApplicationController
   # GET /rentables
   # GET /rentables.json
   def index
-    if params[:owner_id]
-      @rentables = User.find_by(:id).rentables
+    if params[:user_id]
+      @rentables = User.find_by(id: params[:user_id]).try :rentables
     else
       @rentables = Rentable.all
     end
@@ -74,6 +74,6 @@ class RentablesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def rentable_params
-    params.require(:rentable).permit(:description, :price, :owner_id, :title, :image)
+    params.require(:rentable).permit(:description, :price, :user_id, :title, :image)
   end
 end

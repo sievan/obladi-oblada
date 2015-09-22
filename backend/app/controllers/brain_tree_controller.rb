@@ -19,8 +19,8 @@ class BrainTreeController < ApplicationController
 
   def pay_with_last_used_method
     result = Braintree::Transaction.sale(
-      customer_id: "the_customer_id",
-      amount: "10.00"
+      customer_id: user,
+      amount: params[:amount]
     )
     @success = result.success?
   end

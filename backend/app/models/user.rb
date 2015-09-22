@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
     authentication_tokens.first || authentication_tokens.create
   end
 
-  has_one :owner
-  has_many :rentables, through: :owner
+  has_many :rentables
   has_many :rentals
   has_many :authentications
   has_many :authentication_tokens
